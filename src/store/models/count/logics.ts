@@ -16,12 +16,19 @@ export const countLogics = [
     (dispatch, { rootState }) => {
       if (rootState.count.errors.fetching) {
         alert("Error: " + rootState.count.errors.fetching);
+
+        dispatch({
+          type: "count/setError",
+          payload: { type: "fetching", value: null },
+        });
       }
 
       dispatch({
         type: "count/setLoading",
         payload: { type: "fetching", value: false },
       });
-    }
+    },
+    { latest: true },
+    { debounce: 3000 }
   ),
 ];
