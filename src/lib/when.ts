@@ -38,8 +38,8 @@ export function when<
 >(
   actions: string[],
   callback: WhenCallback<State, Payload>,
-  latest: boolean = true,
-  debounce: number = 0
+  { latest }: { latest?: boolean } = { latest: true },
+  { debounce }: { debounce?: number } = { debounce: 0 }
 ): Logic<State, AppAction<Payload>, object, object, undefined, string> {
   return createLogic<
     State,
